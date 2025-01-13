@@ -1,0 +1,16 @@
+.toolbar {
+    display: flex;
+    position: fixed;
+    bottom:0;
+    justify-content: flex-end;
+  }
+  
+  .toolbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+  
+  
+  
+  

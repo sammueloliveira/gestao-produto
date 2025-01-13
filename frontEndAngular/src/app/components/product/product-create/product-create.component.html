@@ -1,0 +1,84 @@
+<mat-card>
+  <mat-card-title>Novo Produto</mat-card-title>
+  <form #productForm="ngForm" (ngSubmit)="createProduct(productForm)">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Código do Produto</mat-label>
+      <input
+        matInput
+        placeholder="Código"
+        [(ngModel)]="product.codigo"
+        name="codigo"
+        maxlength="15"
+        required
+      />
+      <mat-error *ngIf="productForm.submitted && !product.codigo">
+        Código é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+   <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descrição do Produto</mat-label>
+      <textarea
+        matInput
+        placeholder="Descrição do produto"
+        [(ngModel)]="product.descricao"
+        name="descricao"
+        maxlength="30"
+        required
+      ></textarea>
+      <mat-error *ngIf="productForm.submitted && !product.descricao">
+        Descrição é obrigatória.
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Departamento</mat-label>
+      <mat-select [(ngModel)]="product.departamentos" name="departamentos" required>
+        <mat-option *ngFor="let departamento of departamentos" [value]="departamento">
+         {{departamento.codigo}}] - {{ departamento.descricao }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="productForm.submitted && !product.departamentos">
+        Departamento é obrigatório.
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Preço de Venda (R$)</mat-label>
+      <input
+        matInput
+        placeholder="Digite o preço"
+        [(ngModel)]="product.preco"
+        name="preco"
+        type="number"
+        required
+      />
+      <mat-error *ngIf="productForm.submitted && !product.preco">
+        Preço é obrigatório.
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="product.status" name="status" required>
+        <mat-option [value]="true">Ativo</mat-option>
+        <mat-option [value]="false">Inativo</mat-option>
+      </mat-select>
+      <mat-error *ngIf="productForm.submitted && !product.status">
+        Status é obrigatório.
+      </mat-error>
+    </mat-form-field>
+
+
+    <div class="actions">
+      <button mat-raised-button color="primary" type="submit">
+        Salvar
+      </button>
+      <button mat-raised-button color="warn" type="button" (click)="cancel()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</mat-card>

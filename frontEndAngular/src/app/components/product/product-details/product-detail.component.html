@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-title>Detalhes do Produto</mat-card-title>
+  <mat-card-content>
+    <div *ngIf="product">
+      <h2>Detalhes do Produto</h2>
+
+      <p><strong>Código:</strong> {{ product.codigo }}</p>
+      <p><strong>Descrição:</strong> {{ product.descricao }}</p>
+      <p><strong>Departamento:</strong> {{ product.departamentos.codigo }} - {{ product.departamentos.descricao }}</p>
+      <p><strong>Preço:</strong> {{ product.preco | currency: 'BRL' }}</p>
+      <p><strong>Status:</strong> {{ product.status ? 'Ativo' : 'Inativo' }}</p>
+      
+    </div>
+    <div *ngIf="!product">
+      <p>Carregando informações do produto...</p>
+    </div>
+  </mat-card-content>
+
+  <div>
+    <button mat-raised-button routerLink="/products" color="primary">Voltar</button>
+  </div>
+</mat-card>
